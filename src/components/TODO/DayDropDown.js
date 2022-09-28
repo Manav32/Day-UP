@@ -45,7 +45,7 @@ export default function(){
     }
         return(
             <div className="flex flex-col">
-                <button onClick={handleOpen}  className="flex p-3 bg-slate-800 w-44 justify-evenly rounded-full flex-row ">
+                <button onClick={handleOpen}  className="flex p-3 bg-slate-800 w-44 justify-evenly rounded-full flex-row mb-2">
                     <div className="content">{ContentName}</div>
                     <div className="mt-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
@@ -53,7 +53,7 @@ export default function(){
                         </svg>
                     </div>
                 </button>
-                <div className="content m-2 mt-0 w-fit ml-5 hidden" id="contentBox">
+                <div className="content m-2 mt-0 w-fit ml-5 hidden fixed translate-y-14" id="contentBox">
                     {days}
                 </div>
             </div>
