@@ -3,33 +3,53 @@ import DayDropDown from "./DayDropDown";
 
 export default function(){
 
+    const DummyOption = [
+        {
+            name: null,
+            day: null
+        }
+    ]
+
     const[task, setTask] = useState("");
-    const[list, setList] = useState([]);
+    const [taskList, setTaskList] = useState(DummyOption); 
+    const [day, setDay] = useState('Today');
 
     const handleSubmit=(e)=>{
         e.preventDefault();
-        if(task){
-            setList((ls)=>[...ls, task]);
-            setTask("");
+        const newTask = {
+            name: task,
+            day: day
         }
+        const updateExpense = [...taskList, newTask];
+        setTaskList(updateExpense);
+            setTask("");
+            console.log(taskList);
+    }
+
+    const handleSetDay = (day)=>{
+        setDay(day);
     }
 
     return (<div className="Event Todo w-96 bg-slate-900 rounded-2xl m-4 mb-0 h-[25rem] flex flex-col justify-between relative">
                 <div className="Main TODO Content  bg-slate-900 rounded-t-lg h-full p-4 font-semibold">
-                    <DayDropDown></DayDropDown>
+                    
+                    <DayDropDown setDay={handleSetDay}/>
+
                     <div className="Tasks overflow-y-auto max-h-[17rem]">
                     {
-                        list.map((a)=>
-                        <div className="Task1 mt-4 bg-b p-2 rounded-full flex flex-row items-center bg-slate-800">
+                        taskList.map((Task)=>
+                        {if(Task.name!=null && Task.day!=null && (Task.day==day)){
+                        return (<div className="Task1 mt-4 bg-b p-2 rounded-full flex flex-row items-center bg-slate-800">
                             <div className="Task Check">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle hover:cursor-pointer" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
                                 </svg>
                             </div>
                             <div className="Task content mx-4 font-light">
-                                {a}       
+                                {Task.name}       
                             </div>
-                        </div>
+                        </div>);
+                        }}
                     )}           
                     </div>
                 </div>
