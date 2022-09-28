@@ -1,4 +1,5 @@
 import { useState } from "react";
+import DayDropDown from "./DayDropDown";
 
 export default function(){
 
@@ -15,9 +16,7 @@ export default function(){
 
     return (<div className="Event Todo w-96 bg-slate-900 rounded-2xl m-4 mb-0 h-[25rem] flex flex-col justify-between relative">
                 <div className="Main TODO Content  bg-slate-900 rounded-t-lg h-full p-4 font-semibold">
-                    <ul className="Days bg-slate-600 w-fit p-1 px-2 rounded-full mb-2">
-                        <li>Today's Tasks</li>
-                    </ul>
+                    <DayDropDown></DayDropDown>
                     <div className="Tasks overflow-y-auto max-h-[17rem]">
                     {
                         list.map((a)=>

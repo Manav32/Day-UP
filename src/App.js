@@ -4,6 +4,8 @@ import Nav from './components/Nav';
 import Sidebar from './components/Sidebar';
 
 function App() {
+
+  
   return (
     <div className="App flex flex-row w-[100vw]">
       <div className='Sidebar'>
