@@ -1,3 +1,4 @@
+import React from "react";
 import { useState } from "react";
 import DayDropDown from "./DayDropDown";
 
@@ -39,7 +40,7 @@ export default function(){
                     {
                         taskList.map((Task)=>
                         {if(Task.name!=null && Task.day!=null && (Task.day==day)){
-                        return (<div className="Task1 mt-4 bg-b p-2 rounded-full flex flex-row items-center bg-slate-800">
+                        return (<div className="Task1 mt-4 bg-b p-2 rounded-full flex flex-row items-center bg-slate-800 min-w-fit">
                             <div className="Task Check">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-circle hover:cursor-pointer" viewBox="0 0 16 16">
                                 <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>

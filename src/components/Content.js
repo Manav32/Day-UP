@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import TasksBox from "./TODO/TasksBox";
-export default function(){
+export default function(props){
 
     return <div className="bg-none w-full h-full flex flex-col justify-center text-white ">
             <div className="Menu flex flex-row justify-evenly m-3 mx-4 bg-slate-900 p-4 w-96 rounded-lg">
-                <div className="w-8/12">Good Evening! User</div>
+                <div className="w-8/12">Good Evening! {props.Name}</div>
                 
                 <div className="menu flex items-center w-2/12">
                     <ul className="flex flex-row justify-between w-full">

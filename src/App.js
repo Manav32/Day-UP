@@ -1,20 +1,25 @@
+import React from "react";
+import { useState } from 'react';
 import './App.css';
-import Content from './components/Content';
-import Nav from './components/Nav';
-import Sidebar from './components/Sidebar';
+import { Route, Routes } from "react-router";
+import Tasks from "./MainPages/Tasks";
+import UserDetails from "./MainPages/UserDetails";
 
 function App() {
 
-  
+  const [name, setName] = useState('');
+
+    const setNameHandle = (name) => {
+      setName(name);
+      console.log(name)
+    }
+
   return (
     <div className="App flex flex-row w-[100vw]">
-      <div className='Sidebar'>
-        <Sidebar />
-      </div>
-      <div className='flex flex-col w-full  bg-gradient-to-r from-sky-500 to-indigo-500'>
-        <Nav />
-        <Content />
-      </div>
+      <Routes>
+          <Route path="/daily-planner" element={<Tasks Name={name}/>}/>
+          <Route path="/" element={<UserDetails HandleSetName={setNameHandle} />}/>
+      </Routes>
     </div>
   );
 }

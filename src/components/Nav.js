@@ -1,3 +1,4 @@
+import React from "react";
 export default function(){
     return <div className="w-full p-4 pr-20 text-lg text-white flex justify-end ">
         <div className="LoginBtn p-3 pb-4 text-center px-4 rounded-3xl text-blue-200 bg-slate-900 mx-12 flex flex-row list-none w-64 items-center justify-between">
