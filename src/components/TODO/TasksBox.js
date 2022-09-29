@@ -36,7 +36,7 @@ export default function(){
                     
                     <DayDropDown setDay={handleSetDay}/>
 
-                    <div className="Tasks overflow-y-auto max-h-[17rem]">
+                    <div className="Tasks overflow-y-auto max-h-[17rem] scrollbar">
                     {
                         taskList.map((Task)=>
                         {if(Task.name!=null && Task.day!=null && (Task.day==day)){
