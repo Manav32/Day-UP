@@ -1,3 +1,8 @@
+# App Description
+
+This website is about to manage our busy schedule and day to day activity with ease.
+Having the accessibility of clean and easy to use UI made this website very helpful.
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
