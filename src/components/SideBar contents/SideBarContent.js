@@ -7,7 +7,7 @@ export default function(){
         },
         {
             name: 'Lists',
-            subContents: ['Personal', 'Work','Work','Work','Work']
+            subContents: ['Personal', 'Work']
         },
         {
             name: 'Tags',
