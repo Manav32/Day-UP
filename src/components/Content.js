@@ -23,6 +23,8 @@ export default function(props){
                 </div>
             </div>
             {/* Task Box */}
-            <TasksBox></TasksBox>
+            <TasksBox 
+                dayList = {props.dayList}
+            />
     </div>;
 }

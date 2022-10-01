@@ -2,9 +2,11 @@ import React from "react";
 import { useState } from 'react';
 import './App.css';
 import { Route, Routes } from "react-router";
-import Tasks from "./MainPages/Tasks";
-import UserDetails from "./MainPages/Welcome";
-import Today from "./MainPages/Today";
+import Tasks from "./MainTaskPages/Tasks";
+import UserDetails from "./MainTaskPages/Welcome";
+import Today from "./MainTaskPages/Today";
+import Tomorrow from "./MainTaskPages/Tomorrow";
+import TaskState from "./context/Task/TaskState";
 
 function App() {
 
@@ -15,13 +17,43 @@ function App() {
       console.log(name)
     }
 
+    const MainDayList = [
+      {
+          value: 1, 
+          label: "Today"
+      },
+      {
+          value: 2, 
+          label: "Tomorrow"
+      },
+      {
+          value: 3, 
+          label: "All Task"
+      }
+  ];
+
+    const [Task, setTask] = useState('');
+    
   return (
     <div className="App flex flex-row w-[100vw]">
-      <Routes>
-          <Route path="/" element={<UserDetails HandleSetName={setNameHandle} />}/>
-          <Route path="/daily-planner" element={<Tasks Name={name}/>}/>
-          <Route path="/daily-planner/Today" element={<Today />}/>
-      </Routes>
+      <TaskState>
+        <Routes>
+            <Route path="/" element={<UserDetails HandleSetName={setNameHandle} />}/>
+            <Route path="/daily-planner" element={<Tasks 
+            Name={name}
+            task={Task}
+            setTaskList={setTask}
+            />}/>
+            <Route path="/daily-planner/Today" element={<Today 
+            task={Tasks}
+            dayList={MainDayList.slice(0,1)}
+            />}/>
+            <Route path="/daily-planner/Tomorrow" element={<Tomorrow
+            task={Tasks}
+            dayList={MainDayList.slice(1,2)}
+            />}/>
+        </Routes>
+      </TaskState>
     </div>
   );
 }

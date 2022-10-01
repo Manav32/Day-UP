@@ -1,20 +1,15 @@
-import React from "react";
+import React, {useContext} from "react";
 import { useState } from "react";
 import DayDropDown from "./DayDropDown";
+import taskContext from "../../context/Task/TaskContext";
 
-export default function () {
-
-    const DummyOption = [
-        {
-            id: Math.random(),
-            name: null,
-            day: null
-        }
-    ]
+export default function (props) {
 
     const [task, setTask] = useState("");
-    const [taskList, setTaskList] = useState(DummyOption);
-    const [day, setDay] = useState('Today');
+    const [day, setDay] = useState(props.dayList[0].label);
+    
+    const ts = useContext(taskContext);
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -23,9 +18,10 @@ export default function () {
             name: task,
             day: day
         }
-        const updateExpense = [...taskList, newTask];
-        setTaskList(updateExpense);
+        const updateExpense = [...ts.taskList, newTask];
+        ts.setTaskList(updateExpense);
         setTask("");
+
     }
 
     const handleSetDay = (day) => {
@@ -33,17 +29,22 @@ export default function () {
     }
     const handleDelete = (id) => {
         console.log("Task Deleted")
-        setTaskList(taskList.filter(item => item.id !== id));
+        ts.setTaskList(ts.taskList.filter(item => item.id !== id));
     };
+
+
 
     return (<div className="Event Todo w-96 bg-slate-900 rounded-2xl m-4 mb-0 h-[25rem] flex flex-col justify-between relative">
         <div className="Main TODO Content  bg-slate-900 rounded-t-lg h-full p-4 font-semibold">
 
-            <DayDropDown setDay={handleSetDay} />
+            <DayDropDown 
+            setDay = {handleSetDay}
+            dayList = {props.dayList}
+            />
 
             <div className="Tasks overflow-y-auto max-h-[17rem] scrollbar">
                 {
-                    taskList.map((Task) => {
+                    ts.taskList.map((Task) => {
                         if (Task.name != null && Task.day != null && (Task.day == day)) {
                             return (<div className="Task1 mt-4 bg-b p-2 rounded-full flex flex-row items-center bg-slate-800 min-w-fit">
                                 <button onClick={() => handleDelete(Task.id)} className="Task Check">

@@ -1,34 +1,67 @@
+import { Link } from "react-router-dom";
+
 export default function(){
     
     const SideBarData = [
         {
             name: 'Shortcuts',
-            subContents: ['Today', 'Next 7 days', 'All task']
+            subContents: [
+            {
+            name:'Today',
+            link:'/daily-planner/Today'
+            },
+            {
+                name:'Tomorrow',
+                link:'/daily-planner/Tomorrow'
+            },
+            {
+                name:'All Task',
+                link:'/daily-planner'
+            }
+        ]
         },
         {
             name: 'Lists',
-            subContents: ['Personal', 'Work']
+            subContents: [
+                {
+                name:'Personal',
+                link:'/daily-planner/Personal'
+                },
+                {
+                    name:'Work',
+                    link:'/daily-planner/Work'
+                }
+            ]
         },
         {
             name: 'Tags',
-            subContents: ['#important', '#urgent']
+            subContents: [
+                {
+                name:'important',
+                link:'/daily-planner/important'
+                },
+                {
+                    name:'urgent',
+                    link:'/daily-planner/urgent'
+                },
+            ]
         },
     ]
 
     const handleClick = (arg) => (e) => {
         console.log(arg);
         const ele = document.getElementById(arg);
-        if(ele.style.display == 'none'){
-            ele.style.display = 'block';
+        if(ele.classList.contains('hidden')){
+            ele.classList.remove('hidden');
         }else{
-            ele.style.display = 'none';
+            ele.classList.add('hidden');
         }
     }
     
     return(
         SideBarData.map((e)=>{
             return(
-            <div className="Content space-y-3 scrioo">
+            <div className="Content space-y-3 scrollbar">
                 <button onClick={handleClick(e.name)} className="flex flex-row space-x-3">
                     <div className="SideBarName">
                         {e.name}
@@ -39,12 +72,12 @@ export default function(){
                         </svg>
                     </div>
                 </button>
-                        <div className="hidden" id={e.name}>
+                        <div className="hidden" id={e.name} >
                             {e.subContents.map((sub)=>{
                                 return (
-                                <ul className="flex-col ml-4 font-sans font-normal text-slate-300 mt-4 text-sm hover:cursor-pointer hover:font-semibold ">
-                                    <li>{sub}</li> 
-                                </ul>)
+                                <div className="flex-col ml-4 font-sans font-normal text-slate-300 mt-4 text-sm hover:cursor-pointer hover:font-semibold ">
+                                    <Link to={sub.link}>{sub.name}</Link> 
+                                </div>)
                             })}
                         </div>
             </div>

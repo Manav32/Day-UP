@@ -1,52 +1,43 @@
 import React, { useState } from "react";
 
 export default function(props){
-    const options = [
-        {
-            value: 1, 
-            label: "Today"
-        },
-        {
-            value: 2, 
-            label: "Tomorrow"
-        },
-        {
-            value: 3, 
-            label: "Upcoming"
-        },
-        {
-            value: 4, 
-            label: "Someday"
-        }
-    ];
+
 
 
     let [ContentName, setContentName] = useState('Today');
 
     const handleDropDownOutput = param => (e) => {
         setContentName(param);
-        let contentBox = document.getElementById('contentBox');
-        contentBox.style.display = 'none'
+        setIsOpen(!isOpen);
         props.setDay(param);
     }
 
-    const days = options.map((e)=>{
+    const days = props.dayList.map((e)=>{
         return (
             <button onClick={handleDropDownOutput(e.label)} className="flex p-3 bg-slate-700 w-44 justify-center hover:bg-slate-500 border-b-2 border-slate-500">{e.label}</button>
         );
     })
 
-    const handleOpen=()=>{
-        let contentBox = document.getElementById('contentBox');
-        if(contentBox.style.display == 'none'){
-            contentBox.style.display = 'block'
-        }else{
-            contentBox.style.display = 'none'
-        }
-    }
+
+    
+    const [isOpen,setIsOpen] = useState(false);
+
+    let count = 0; //Checking no. of task in dropdown
+    if(props.dayList.map((e)=>{
+        count++;  
+    }))
+    
+
+    if(count == 1){
+        return (
+            <div className="label flex p-3 bg-slate-800 w-44 justify-evenly rounded-full flex-row mb-2 ">
+                {props.dayList[0].label}
+            </div>
+        );
+    }else{
         return(
             <div className="flex flex-col">
-                <button onClick={handleOpen}  className="flex p-3 bg-slate-800 w-44 justify-evenly rounded-full flex-row mb-2">
+                <button onClick={()=>{setIsOpen(!isOpen)}}  className="flex p-3 bg-slate-800 w-44 justify-evenly rounded-full flex-row mb-2 ">
                     <div className="content ">{ContentName}</div>
                     <div className="mt-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
@@ -54,9 +45,13 @@ export default function(props){
                         </svg>
                     </div>
                 </button>
-                <div className="content m-2 mt-0 w-fit ml-5 hidden fixed translate-y-14" id="contentBox">
-                    {days}
-                </div>
+                    { isOpen?(
+                        <div className="content m-2 mt-0 w-fit ml-5  fixed translate-y-14" id="contentBox">
+                            {days}
+                        </div>
+                        ):(<div></div>)
+                    }
             </div>
             );
+        }
 }
