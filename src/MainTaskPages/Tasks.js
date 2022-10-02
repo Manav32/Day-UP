@@ -25,12 +25,12 @@ function Tasks(props) {
     ];
 
     return (
-        <div className="App flex flex-row w-[100vw]">
+        <div className="App flex flex-row w-[100vw] min-h-[100vh]">
             
             <div className='Sidebar'>
                 <Sidebar />
         </div>
-        <div className='flex flex-col w-full  bg-gradient-to-r from-sky-500 to-indigo-500'>
+        <div className='flex flex-col bg-gradient-to-r from-sky-500 to-indigo-500 ml-[16rem] w-[Calc(100vw)]'>
             <Nav />
             <Content 
             Name={props.Name}

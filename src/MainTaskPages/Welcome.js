@@ -1,25 +1,33 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import React from "react";
 import { useNavigate } from "react-router";
+import taskContext from "../context/Task/TaskContext";
+
 
 const UserDetails = (props)=>{
+
+    const tc = useContext(taskContext);
     const navigate = useNavigate();
     const [name, setName] = useState('');
+    tc.setUserName(name);
     const handleName = (e) => {
         e.preventDefault();
         console.log(name);
         props.HandleSetName(name);
         navigate("/daily-planner");
     }
+
+
     
     return (
         <div className="w-[100vw] h-[100vh] bg-slate-700 text-white">
             <div className="heading text-center mt-36 font-mono">
-                <div className="text-4xl font-bold">Hi! Welcome to DayUp</div>
+                <div className="text-5xl font-bold flex flex-row w-full justify-center">Hi! {name}</div>
+                <div className="text-4xl font-bold flex flex-row w-full justify-center mt-5">Welcome to DayUp</div>
                 <div className="text-lg mt-3">This website will help you to manage your busy day and help you to efficiently complete your daily tasks</div>
             </div>
             <form onSubmit={handleName} className="mt-10 w-3/12 mx-auto">
-                <input required type='text' placeholder="Enter your name" className="font-mono p-2 rounded w-full text-center focus:outline-blue-800 text-black font-bold" onChange={(e)=>setName(e.target.value)}/>
+                <input maxLength='20' required type='text' placeholder="Enter your name" className="font-mono p-2 rounded w-full text-center focus:outline-blue-800 text-black font-bold" onChange={(e)=>setName(e.target.value)}/>
                 <button className="font-bold flex flex-row bg-slate-800 rounded-full p-1 px-5 mx-auto mt-5 hover:bg-slate-900">
                     <div className="m-3 text-2xl">Continue</div>
                     <div className="m-4">

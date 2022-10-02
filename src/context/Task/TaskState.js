@@ -11,11 +11,12 @@ const TaskState = (props) =>{
         }
     ]
     const [taskList, setTaskList] = useState(ts);
+    const [userName, setUserName] = useState('');
 
 
 
     return(
-        <taskContext.Provider value={{taskList, setTaskList}}>
+        <taskContext.Provider value={{taskList, setTaskList, userName, setUserName}}>
             {props.children}
         </taskContext.Provider>
     )
