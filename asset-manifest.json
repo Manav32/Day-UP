@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/Day-UP/static/css/main.7ac9a2e2.css",
-    "main.js": "/Day-UP/static/js/main.d2d43a42.js",
+    "main.js": "/Day-UP/static/js/main.20f34ad9.js",
     "index.html": "/Day-UP/index.html",
     "main.7ac9a2e2.css.map": "/Day-UP/static/css/main.7ac9a2e2.css.map",
-    "main.d2d43a42.js.map": "/Day-UP/static/js/main.d2d43a42.js.map"
+    "main.20f34ad9.js.map": "/Day-UP/static/js/main.20f34ad9.js.map"
   },
   "entrypoints": [
     "static/css/main.7ac9a2e2.css",
-    "static/js/main.d2d43a42.js"
+    "static/js/main.20f34ad9.js"
   ]
 }
