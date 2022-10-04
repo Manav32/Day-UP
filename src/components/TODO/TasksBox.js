@@ -34,7 +34,7 @@ export default function (props) {
 
 
 
-    return (<div className="Event Todo w-96 bg-slate-900 rounded-2xl m-4 mb-0 h-[25rem] flex flex-col justify-between relative">
+    return (<div className="Event Todo w-96 bg-slate-900 rounded-2xl m-4 mb-0 h-[25rem] flex flex-col justify-between">
         <div className="Main TODO Content  bg-slate-900 rounded-t-lg h-full p-4 font-semibold">
 
             <DayDropDown 
