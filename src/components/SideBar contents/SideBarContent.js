@@ -61,7 +61,7 @@ export default function(){
     return(
         SideBarData.map((e)=>{
             return(
-            <div className="Content space-y-3 scrollbar">
+            <div className="Content space-y-3 scrollbar ml-1">
                 <button onClick={handleClick(e.name)} className="flex flex-row space-x-3">
                     <div className="SideBarName">
                         {e.name}

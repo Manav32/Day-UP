@@ -20,7 +20,7 @@ const UserDetails = (props)=>{
 
     
     return (
-        <div className="w-[100vw] h-[100vh] bg-slate-700 text-white">
+        <div className="w-[100vw] h-[100vh] bg-slate-700 text-white fixed">
             <div className="heading text-center mt-10 md:mt-20 lg:mt-36 font-mono">
                 <div className="text-5xl font-bold flex flex-row w-full justify-center">Hi! {name}</div>
                 <div className="text-4xl font-bold flex flex-row w-full justify-center mt-5">Welcome to DayUp</div>

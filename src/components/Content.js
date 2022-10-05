@@ -3,7 +3,7 @@ import TasksBox from "./TODO/TasksBox";
 export default function(props){
 
     return <div className="bg-none w-full h-full flex flex-col  text-white ">
-            <div className="Menu flex flex-row justify-evenly m-3 bg-slate-900 p-4  w-3/4 sm:w-96 rounded-lg mt-20 mx-auto md:ml-10">
+            <div className="Menu flex flex-row justify-evenly m-3 bg-slate-900 p-4  w-3/4 sm:w-96 rounded-lg mt-10 mx-auto md:ml-10 ">
                 <div className="w-8/12">Good Evening! {props.Name}</div>
                 
                 <div className="menu flex items-center w-2/12">

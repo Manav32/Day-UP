@@ -30,7 +30,7 @@ function Tasks(props) {
     return (
         <div className="App flex flex-row w-[100vw] min-h-[100vh]">
             
-            <div id="SideBar" className='Sidebar hidden lg:flex'>
+            <div id="SideBar" className='Sidebar hidden lg:flex '>
                 <Sidebar />
             </div>
             
