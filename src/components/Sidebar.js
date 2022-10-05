@@ -57,7 +57,7 @@ export default function(){
     )
 
 
-    return <div className="h-[100vh] bg-slate-900 w-64 text-white flex flex-col p-3 font-mono  text-xl font-bold overflow-y-auto scrollbar fixed" >
+    return <div className="h-[100vh] bg-slate-900 text-white flex flex-col p-3 font-mono  text-xl font-bold overflow-y-auto scrollbar fixed w-full lg:w-64" >
         <div className="userProfile flex flex-col space-y-6 mt-8">
             <div className="userData flex flex-row items-center justify-center space-x-3 ">
                 <div className="User flex justify-center">
