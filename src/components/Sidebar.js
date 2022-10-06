@@ -2,12 +2,20 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import taskContext from "../context/Task/TaskContext";
 import SideBarContent from "./SideBar contents/SideBarContent";
 import SideBarTaskBtn from "./SideBar contents/SideBarTaskBtn";
+import DayDropDown from "./TODO/DayDropDown";
 
 
-export default function(){
+export default function(props){
 
     const tc = useContext(taskContext);
     let [isOpen, setIsOpen] = useState(false);
+    let [task, setTask] = useState('');
+    const [day, setDay] = useState(props.dayList[0].label);
+
+    const handleSetDay = (day) => {
+        setDay(day);
+    }
+
     let createTaskRef = useRef();
 
     const handleTextAreaHeight = function (e) {
@@ -15,7 +23,6 @@ export default function(){
         element.style.height = 0;
         element.style.height = element.scrollHeight + 'px';
     };
-    
 
     useEffect(()=>{
         document.addEventListener("mousedown", (e)=>{
@@ -24,6 +31,19 @@ export default function(){
             }
         })
     })
+
+    const handleSubmit = (e) =>{
+        e.preventDefault();
+        const newTask = {
+            id: Math.random(),
+            name: task,
+            day: day
+        }
+        const updateExpense = [...tc.taskList, newTask];
+        tc.setTaskList(updateExpense);
+        setIsOpen(false);
+        setTask("");
+    }
 
     return <div className="h-[100vh] bg-slate-900 text-white flex flex-col p-3 font-mono  text-xl font-bold overflow-y-auto scrollbar fixed w-full lg:w-64" >
         <div className="userProfile flex flex-col space-y-6 mt-8">
@@ -43,15 +63,17 @@ export default function(){
         <div className="SideBarContent flex flex-col space-y-8 mt-10 p-2 ">
             <SideBarContent />
         </div>
+
+        {/* Task Creating Box */}
         {isOpen?<div className="Creating Task box">
             <div id="createTaskBox" className="CreateTaskOption fixed h-[100vh] w-[100vw] bg-slate-400 top-0 left-0 bg-opacity-50">
                     <div ref={createTaskRef} className="h-[26rem] w-[28em] bg-slate-800 mt-20 rounded-lg mx-auto"> 
-                        <form className="w-full flex flex-col h-full">
+                        <form className="w-full flex flex-col h-full" onSubmit={handleSubmit}>
                             <div className="w-full flex flex-row h-full p-4 ">
                                 <div className="left w-2/3 h-full border-r-2 pr-4">
                                     <div className="heading">
                                         {/* Taking Task heading From user */}
-                                        <input type="text" placeholder="I want to ..." className="p-2 font-bold font-mono rounded w-full bg-slate-900 focus:outline-none" />
+                                        <input required type="text" placeholder="I want to ..." className="p-2 font-bold font-mono rounded w-full bg-slate-900 focus:outline-none" onChange={(e)=>setTask(e.target.value)} />
                                         <p className="text-slate-600 font-mono mt-2">NOTES</p>
                                     </div>
                                         {/* Taking Notes From user */}
@@ -64,14 +86,19 @@ export default function(){
                                     <div className="List">
                                     </div>
                                     <div className="Reminder">
-                                        <p>Remind Me</p>
-                                        <SideBarTaskBtn />
-                                        <SideBarTaskBtn />
-                                        <SideBarTaskBtn />
+                                        <p className="border-b-2 border-slate-600 text-center">Select Day</p>
+                                        <div className="bg-slate-300 w-36 rounded-full mt-3 h-12 mx-auto ">
+                                            <div className="-translate-y-1">
+                                                <DayDropDown
+                                                    setDay = {handleSetDay}
+                                                    dayList = {props.dayList}
+                                                />
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                            <button className="bg-slate-900 p-3 rounded-b-lg drop-shadow-xl text-slate-400">Submit</button>
+                            <button type="submit" className="bg-slate-900 p-3 rounded-b-lg drop-shadow-xl text-slate-400">Submit</button>
                         </form>
                     </div>
                 </div>

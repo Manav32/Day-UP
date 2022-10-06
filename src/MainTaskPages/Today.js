@@ -11,7 +11,10 @@ function Tasks(props) {
         <div className="App flex flex-row w-[100vw] min-h-[100vh]">
             
             <div id="SideBar" className='Sidebar hidden lg:flex'>
-                <Sidebar />
+                <Sidebar 
+                    Name={props.Name}
+                    dayList = {props.dayList}
+                />
             </div>
             
 

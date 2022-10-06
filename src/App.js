@@ -17,20 +17,20 @@ function App() {
       console.log(name)
     }
 
-    const MainDayList = [
-      {
-          value: 1, 
-          label: "Today"
-      },
-      {
-          value: 2, 
-          label: "Tomorrow"
-      },
-      {
-          value: 3, 
-          label: "All Task"
-      }
-  ];
+  const dayList = [
+    {
+        value: 1, 
+        label: "Today"
+    },
+    {
+        value: 2, 
+        label: "Tomorrow"
+    },
+    {
+        value: 3, 
+        label: "Upcoming"
+    },
+];
 
     const [Task, setTask] = useState('');
     
@@ -43,14 +43,15 @@ function App() {
             Name={name}
             task={Task}
             setTaskList={setTask}
+            dayList={dayList}
             />}/>
             <Route path="/daily-planner/Today" element={<Today 
             task={Tasks}
-            dayList={MainDayList.slice(0,1)}
+            dayList={dayList.slice(0,1)}
             />}/>
             <Route path="/daily-planner/Tomorrow" element={<Tomorrow
             task={Tasks}
-            dayList={MainDayList.slice(1,2)}
+            dayList={dayList.slice(1,2)}
             />}/>
         </Routes>
       </TaskState>

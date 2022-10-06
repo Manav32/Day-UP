@@ -22,7 +22,7 @@ export default function(props){
 
     const days = props.dayList.map((e)=>{
         return (
-            <button onClick={handleDropDownOutput(e.label)} className="flex p-3 bg-slate-700 w-44 justify-center hover:bg-slate-500 border-b-2 border-slate-500">{e.label}</button>
+            <button onClick={handleDropDownOutput(e.label)} className="hover:ease-in-out hover:duration-400 hover:bg-slate-400  w-full p-3 hover:rounded border-b-2 border-slate-700 ">{e.label}</button>
         );
     })
 
@@ -38,24 +38,28 @@ export default function(props){
 
     if(count == 1){
         return (
-            <div className="label flex p-3 bg-slate-800 w-44 justify-evenly rounded-full flex-row mb-2 ">
-                {props.dayList[0].label}
+            <div className="label flex p-3 -ml-4 bg-none w-44 justify-evenly rounded-full flex-row mb-2 text-black">
+                <div className="name -ml-5  ">
+                    {props.dayList[0].label}
+                </div>
             </div>
         );
     }else{
         return(
             <div ref={dropDownRef} className="flex flex-col">
-                <button onClick={()=>{setIsOpen(!isOpen)}}  className="flex p-3 bg-slate-800 w-44 justify-evenly rounded-full flex-row mb-2 ">
-                    <div className="content ">{ContentName}</div>
-                    <div className="mt-1">
+                <button onClick={()=>{setIsOpen(!isOpen)}}  className="flex p-3 -ml-4 mt-1 bg-none w-44 justify-evenly rounded-full flex-row mb-2 text-black max-h-10">
+                    <div className="content -mt-1">{ContentName}</div>
+                    <div className="svg mr-1">
                         <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
                         <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
                         </svg>
                     </div>
                 </button>
                     { isOpen?(
-                        <div className="content m-2 mt-0 w-fit ml-5  fixed translate-y-14" id="contentBox">
-                            {days}
+                        <div className="content m-2 w-fit ml-5 fixed translate-y-14" id="contentBox">
+                            <div className="flex flex-col bg-slate-300 text-black w-44 justify-center rounded mt-2">
+                                {days}
+                            </div>
                         </div>
                         ):(<div></div>)
                     }

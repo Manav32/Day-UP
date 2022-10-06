@@ -36,12 +36,12 @@ export default function (props) {
 
     return (<div className="Event Todo bg-slate-900 rounded-2xl m-4 mb-10 min-h-[25rem] max-h-[25rem] flex flex-col justify-between w-3/4 sm:w-96 mx-auto md:ml-10">
         <div className="Main TODO Content  bg-slate-900 rounded-t-lg h-full p-4 font-semibold w-full">
-
-            <DayDropDown 
-            setDay = {handleSetDay}
-            dayList = {props.dayList}
-            />
-
+            <div className="bg-slate-300 text-black rounded-full w-32 h-fit">
+                <DayDropDown 
+                setDay = {handleSetDay}
+                dayList = {props.dayList}
+                />
+            </div>
             <div className="Tasks overflow-y-auto max-h-[17rem] scrollbar">
                 {
                     ts.taskList.map((Task) => {
@@ -62,7 +62,7 @@ export default function (props) {
             </div>
         </div>
         <form onSubmit={handleSubmit} className="chat bg-slate-800 h-20 rounded-b flex justify-center" >
-            <input required type="text" placeholder="Create your task" id="taskInput" className="border-2 p-3 m-2 h-2/3 w-full rounded-full border-none bg-slate-900 " name="task" value={task} onChange={(e) => setTask(e.target.value)} />
+            <input required type="text" placeholder="Create your task" id="taskInput" className="border-2 p-3 m-2 h-2/3 w-full rounded-full border-none bg-slate-900 focus:outline-none" name="task" value={task} onChange={(e) => setTask(e.target.value)} />
             <button className="submit w-1/3 flex justify-center items-center">
 
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up-circle h-full w-2/6 text-white mb-1 hover:cursor-pointer" viewBox="0 0 16 16">

@@ -5,33 +5,16 @@ import Sidebar from '../components/Sidebar';
 import CatMenu from "../components/SideBar contents/CatMenu";
 
 function Tasks(props) {
-
-    const dayList = [
-        {
-            value: 1, 
-            label: "Today"
-        },
-        {
-            value: 2, 
-            label: "Tomorrow"
-        },
-        {
-            value: 3, 
-            label: "Upcoming"
-        },
-        {
-            value: 4, 
-            label: "Someday"
-        }
-    ];
-    
     
 
     return (
         <div className="App flex flex-row w-[100vw] min-h-[100vh]">
             
             <div id="SideBar" className='Sidebar hidden lg:flex '>
-                <Sidebar />
+                <Sidebar 
+                    Name={props.Name}
+                    dayList = {props.dayList}
+                />
             </div>
             
 
@@ -41,7 +24,7 @@ function Tasks(props) {
             <Nav />
             <Content 
             Name={props.Name}
-            dayList = {dayList}
+            dayList = {props.dayList}
             />
         </div>
         </div>
