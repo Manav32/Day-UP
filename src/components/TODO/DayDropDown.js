@@ -1,8 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, useRef} from "react";
 
 export default function(props){
 
+    let dropDownRef = useRef();
 
+    useEffect(()=>{
+        document.addEventListener("mousedown", (e)=>{
+            if(!dropDownRef.current.contains(e.target)){
+                setIsOpen(false);
+            }
+        })
+    })
 
     let [ContentName, setContentName] = useState('Today');
 
@@ -36,7 +44,7 @@ export default function(props){
         );
     }else{
         return(
-            <div className="flex flex-col">
+            <div ref={dropDownRef} className="flex flex-col">
                 <button onClick={()=>{setIsOpen(!isOpen)}}  className="flex p-3 bg-slate-800 w-44 justify-evenly rounded-full flex-row mb-2 ">
                     <div className="content ">{ContentName}</div>
                     <div className="mt-1">
