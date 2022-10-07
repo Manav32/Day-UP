@@ -87,8 +87,8 @@ export default function(props){
                                     </div>
                                     <div className="Reminder">
                                         <p className="lg:border-b-2 border-slate-600 ml-3 lg:text-center">Select Day</p>
-                                        <div className="bg-orange-400 w-36 rounded-full mt-5 lg:mt-3 h-10 lg:mx-auto text-base">
-                                            <div className="-translate-y-1">
+                                        <div className="bg-orange-300 w-36 rounded-full mt-5 lg:mt-3 h-10 lg:mx-auto text-base">
+                                            <div className="-translate-y-1 -ml-1">
                                                 <DayDropDown
                                                     setDay = {handleSetDay}
                                                     dayList = {props.dayList}
