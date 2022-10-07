@@ -36,11 +36,13 @@ export default function (props) {
 
     return (<div className="Event Todo bg-slate-900 rounded-2xl m-4 mb-10 min-h-[25rem] max-h-[25rem] flex flex-col justify-between w-3/4 sm:w-96 mx-auto md:ml-10">
         <div className="Main TODO Content  bg-slate-900 rounded-t-lg h-full p-4 font-semibold w-full">
-            <div className="bg-slate-300 text-black rounded-full w-32 h-fit">
-                <DayDropDown 
-                setDay = {handleSetDay}
-                dayList = {props.dayList}
-                />
+            <div className="bg-orange-400 text-black rounded-full w-32 h-10 flex items-center">
+                <div className="">
+                    <DayDropDown 
+                    setDay = {handleSetDay}
+                    dayList = {props.dayList}
+                    />
+                </div>
             </div>
             <div className="Tasks overflow-y-auto max-h-[17rem] scrollbar">
                 {

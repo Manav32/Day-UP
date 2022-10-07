@@ -66,28 +66,28 @@ export default function(props){
 
         {/* Task Creating Box */}
         {isOpen?<div className="Creating Task box">
-            <div id="createTaskBox" className="CreateTaskOption fixed h-[100vh] w-[100vw] bg-slate-400 top-0 left-0 bg-opacity-50">
-                    <div ref={createTaskRef} className="h-[26rem] w-[28em] bg-slate-800 mt-20 rounded-lg mx-auto"> 
+            <div id="createTaskBox" className="CreateTaskOption fixed h-[100vh] w-[100vw] bg-slate-400 top-0 left-0 bg-opacity-30 ">
+                    <div ref={createTaskRef} className=" h-fit w-fit  lg:h-[26rem] lg:w-[28em] bg-slate-800  mt-20 rounded-lg mx-auto"> 
                         <form className="w-full flex flex-col h-full" onSubmit={handleSubmit}>
-                            <div className="w-full flex flex-row h-full p-4 ">
-                                <div className="left w-2/3 h-full border-r-2 pr-4">
+                            <div className="w-full flex flex-col lg:flex-row h-full p-4 ">
+                                <div className="left w-full lg:w-2/3 h-full border-b-2 lg:border-b-0 lg:border-r-2 pr-4">
                                     <div className="heading">
                                         {/* Taking Task heading From user */}
                                         <input required type="text" placeholder="I want to ..." className="p-2 font-bold font-mono rounded w-full bg-slate-900 focus:outline-none" onChange={(e)=>setTask(e.target.value)} />
                                         <p className="text-slate-600 font-mono mt-2">NOTES</p>
                                     </div>
                                         {/* Taking Notes From user */}
-                                    <div className="TaskContent mt-2 overflow-y-auto max-h-[15rem] scrollbar">
+                                    <div className="TaskContent my-3 mb-6 lg:mt-2 overflow-y-auto max-h-[15rem] scrollbar">
                                             <textarea onChange={handleTextAreaHeight} placeholder="Enter your notes here.." rows="1" className="h-full w-full bg-slate-800 focus:bg-slate-900 hover:bg-slate-900 p-2 pt-3 font-light font-mono mt-2 text-sm rounded-lg overflow-hidden focus:outline-none"/>    
                                     </div>
                                 </div>
                                 
-                                <div className="right w-1/3 h-full p-2">
+                                <div className="right w-full lg:w-1/3 h-full p-2 my-5">
                                     <div className="List">
                                     </div>
                                     <div className="Reminder">
-                                        <p className="border-b-2 border-slate-600 text-center">Select Day</p>
-                                        <div className="bg-slate-300 w-36 rounded-full mt-3 h-12 mx-auto ">
+                                        <p className="lg:border-b-2 border-slate-600 ml-3 lg:text-center">Select Day</p>
+                                        <div className="bg-orange-400 w-36 rounded-full mt-5 lg:mt-3 h-10 lg:mx-auto text-base">
                                             <div className="-translate-y-1">
                                                 <DayDropDown
                                                     setDay = {handleSetDay}
@@ -98,7 +98,7 @@ export default function(props){
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" className="bg-slate-900 p-3 rounded-b-lg drop-shadow-xl text-slate-400">Submit</button>
+                            <button type="submit" className="bg-slate-900 p-3 rounded-b-lg  text-slate-400">Submit</button>
                         </form>
                     </div>
                 </div>
