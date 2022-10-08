@@ -3,7 +3,7 @@ import Content from '../components/Content';
 import Nav from '../components/Nav';
 import Sidebar from '../components/Sidebar';
 import CatMenu from "../components/SideBar contents/CatMenu";
-import bgImage from '../img/contentBg2.jpeg'
+import bgImage from '../img/bgImage.png'
 
 function Tasks(props) {
     
