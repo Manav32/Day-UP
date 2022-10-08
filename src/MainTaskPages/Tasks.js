@@ -3,12 +3,16 @@ import Content from '../components/Content';
 import Nav from '../components/Nav';
 import Sidebar from '../components/Sidebar';
 import CatMenu from "../components/SideBar contents/CatMenu";
+import bgImage from '../img/contentBg2.jpeg'
 
 function Tasks(props) {
     
-
+    const image = {
+        backgroundImage:
+        `url(${bgImage})`,
+    };
     return (
-        <div className="App flex flex-row w-[100vw] min-h-[100vh]">
+        <div className="App flex flex-row w-[100vw] min-h-[100vh]" >
             
             <div id="SideBar" className='Sidebar hidden lg:flex '>
                 <Sidebar 
@@ -18,7 +22,7 @@ function Tasks(props) {
             </div>
             
 
-        <div className='flex flex-col bg-gradient-to-r from-sky-500 to-indigo-500 lg:ml-[16rem] w-[Calc(100vw)] '>
+        <div className='flex flex-col lg:ml-[16rem] w-[Calc(100vw)] bg-cover bg-center bgImage' style={image}>
             <CatMenu />
 
             <Nav />

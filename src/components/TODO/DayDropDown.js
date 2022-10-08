@@ -22,7 +22,7 @@ export default function(props){
 
     const days = props.dayList.map((e)=>{
         return (
-            <div onClick={handleDropDownOutput(e.label)} className="hover:ease-in-out hover:duration-400 cursor-pointer hover:bg-orange-400  w-full p-3 hover:rounded border-b-2 border-slate-700 ">{e.label}</div>
+            <div onClick={handleDropDownOutput(e.label)} className="hover:ease-in-out hover:duration-400 cursor-pointer hover:bg-slate-400  w-full p-3 hover:rounded border-b-2 border-slate-700">{e.label}</div>
         );
     })
 
@@ -39,7 +39,7 @@ export default function(props){
     if(count == 1){
         return (
             <div className="label flex p-3 -ml-4 bg-none w-44 justify-evenly rounded-full flex-row mb-2 text-black">
-                <div className="name -ml-5  ">
+                <div className="name -ml-5 mt-1 ">
                     {props.dayList[0].label}
                 </div>
             </div>
@@ -57,7 +57,7 @@ export default function(props){
                 </div>
                     { isOpen?(
                         <div className="content m-2 w-fit ml-5 fixed translate-y-14 " id="contentBox">
-                            <div className="flex flex-col bg-orange-300 text-black w-44 justify-center rounded -mt-2">
+                            <div className="flex flex-col bg-slate-300 text-black w-44 justify-center rounded -mt-2">
                                 {days}
                             </div>
                         </div>

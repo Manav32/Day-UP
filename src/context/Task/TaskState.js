@@ -10,13 +10,27 @@ const TaskState = (props) =>{
             day: null
         }
     ]
+    const dayList = [
+        {
+            value: 1, 
+            label: "Today"
+        },
+        {
+            value: 2, 
+            label: "Tomorrow"
+        },
+        {
+            value: 3, 
+            label: "Upcoming"
+        },
+    ];
     const [taskList, setTaskList] = useState(ts);
     const [userName, setUserName] = useState('');
 
 
 
     return(
-        <taskContext.Provider value={{taskList, setTaskList, userName, setUserName}}>
+        <taskContext.Provider value={{taskList, setTaskList, userName, setUserName, dayList}}>
             {props.children}
         </taskContext.Provider>
     )
