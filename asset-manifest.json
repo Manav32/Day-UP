@@ -1,13 +1,14 @@
 {
   "files": {
-    "main.css": "/Day-UP/static/css/main.f73bee91.css",
-    "main.js": "/Day-UP/static/js/main.34534096.js",
+    "main.css": "/Day-UP/static/css/main.3bab7016.css",
+    "main.js": "/Day-UP/static/js/main.1f332d98.js",
+    "static/media/contentBg2.jpeg": "/Day-UP/static/media/contentBg2.aefe7ef43ad6a4edf67a.jpeg",
     "index.html": "/Day-UP/index.html",
-    "main.f73bee91.css.map": "/Day-UP/static/css/main.f73bee91.css.map",
-    "main.34534096.js.map": "/Day-UP/static/js/main.34534096.js.map"
+    "main.3bab7016.css.map": "/Day-UP/static/css/main.3bab7016.css.map",
+    "main.1f332d98.js.map": "/Day-UP/static/js/main.1f332d98.js.map"
   },
   "entrypoints": [
-    "static/css/main.f73bee91.css",
-    "static/js/main.34534096.js"
+    "static/css/main.3bab7016.css",
+    "static/js/main.1f332d98.js"
   ]
 }
