@@ -1,8 +1,10 @@
 import React, { useState } from "react";
+import ZenMode from "./focus/ZenMode";
 import TasksBox from "./TODO/TasksBox";
 export default function(props){
 
-    return <div className="bg-none w-full h-full flex flex-col  text-white font-mono">
+    return <div className="bg-none w-full h-full flex flex-row justify-evenly  text-white font-mono">
+        <div className="TextBox  flex flex-col  text-white font-mono">
             <div className="Menu flex flex-row justify-evenly m-3 bg-slate-900 p-4  w-3/4 sm:w-96 rounded-lg mt-10 mx-auto md:ml-10 ">
                 <div className="w-8/12">Good Evening! {props.Name}</div>
                 
@@ -22,9 +24,18 @@ export default function(props){
                     </ul>
                 </div>
             </div>
-            {/* Task Box */}
-                <TasksBox 
+                <div>
+                {/* Task Box */}
+                    <TasksBox 
+                        dayList = {props.dayList}
+                    />
+                </div>
+            </div>
+            {/* Focus section */}
+            <div className="focus">
+                <ZenMode 
                     dayList = {props.dayList}
                 />
+            </div>
     </div>;
 }
