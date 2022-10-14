@@ -18,6 +18,8 @@ export default function(props){
     const handleBlur = (id) => {
         const list = document.getElementsByClassName("Task_List");
         const checkBox = document.getElementsByClassName("form-check-input");
+        const Menu = document.getElementById("DropDownMenu");
+
         if(!FocusTaskSet){
             for(let i=0; i<list.length; i++){
                 if(list[i].id == id){
@@ -26,10 +28,12 @@ export default function(props){
                 list[i].classList.add("blur");
                 checkBox[i].disabled = true;
             }
-
+            
+            Menu.classList.add("invisible");
             FocusTaskSet = true; //Making is Clicked true
             setId = id; //Setting id
         }else if(id === setId){
+            Menu.classList.remove("invisible");
             for(let i=0; i<list.length; i++){
                 if(list[i].id == id){
                     continue;                         
@@ -48,7 +52,7 @@ export default function(props){
             <div className="note w-full text-center mb-3 mt-3 text-xs">
                 Please Select any task to continue
             </div>
-            <div className="DropDown bg-slate-300 rounded-full w-fit mx-auto">
+            <div id="DropDownMenu" className="bg-slate-300 rounded-full w-fit mx-auto transition duration-200">
                         <DayDropDown 
                         setDay = {handleSetDay}
                         dayList = {props.dayList}
