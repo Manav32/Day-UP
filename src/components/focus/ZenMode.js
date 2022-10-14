@@ -13,9 +13,33 @@ export default function(props){
     const handleSetDay = (day) => {
         setDay(day);
     }
-    const handleDelete = (id) => {
-        console.log("Task Deleted")
-        ts.setTaskList(ts.taskList.filter(item => item.id !== id));
+    let FocusTaskSet = false;
+    let setId = 0;
+    const handleBlur = (id) => {
+        const list = document.getElementsByClassName("Task_List");
+        const checkBox = document.getElementsByClassName("form-check-input");
+        if(!FocusTaskSet){
+            for(let i=0; i<list.length; i++){
+                if(list[i].id == id){
+                    continue;                         
+                }
+                list[i].classList.add("blur");
+                checkBox[i].disabled = true;
+            }
+
+            FocusTaskSet = true; //Making is Clicked true
+            setId = id; //Setting id
+        }else if(id === setId){
+            for(let i=0; i<list.length; i++){
+                if(list[i].id == id){
+                    continue;                         
+                }
+                list[i].classList.remove("blur");
+                checkBox[i].disabled = false;
+            }
+            FocusTaskSet = false;
+            
+        }
     };
 
     return (
@@ -32,13 +56,16 @@ export default function(props){
             </div>
 
             <div className="taskList my-4 h-[40%] p-3">
-                <div className="Tasks overflow-y-auto max-h-[15rem] scrollbar">
+                <div className="Tasks overflow-y-auto max-h-[15rem] scrollbar
+                ">
                     {
                         ts.taskList.map((Task) => {
                             if (Task.name != null && Task.day != null && (Task.day == day)) {
-                                return (<div className="Task1 mt-4 bg-b p-2 px-4 rounded-full flex flex-row items-center bg-slate-800 min-w-fit ">
-                                    <input type="checkbox" />
-                                    <div className="Task content mx-4 font-light">
+                                return (<div className="Task_List mt-4 bg-b p-2 px-4 rounded-full flex flex-row items-center bg-slate-800 min-w-fit transition duration-200" id={Task.id}>
+                                    <div className="checkbox" onClick={()=>handleBlur(Task.id)}>
+                                        <input type="checkbox" className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-400 checked:border-blue-600 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer" name="task"/>
+                                    </div>
+                                    <div className="TaskName content mx-4 font-light">
                                         {Task.name}
                                     </div>
                                 </div>);
