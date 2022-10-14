@@ -65,7 +65,7 @@ export default function(props){
 
         {/* Task Creating Box */}
         {isOpen?<div className="Creating Task box">
-            <div id="createTaskBox" className="CreateTaskOption fixed h-[100vh] w-[100vw] bg-slate-400 top-0 left-0 bg-opacity-30 ">
+            <div id="createTaskBox" className="CreateTaskOption fixed h-[100vh] w-[100vw] bg-black top-0 left-0 bg-opacity-50 ">
                     <div ref={createTaskRef} className=" h-fit w-fit  lg:h-[26rem] lg:w-[28em] bg-slate-800  mt-20 rounded-lg mx-auto"> 
                         <form className="w-full flex flex-col h-full" onSubmit={handleSubmit}>
                             <div className="w-full flex flex-col lg:flex-row h-full p-4 ">
