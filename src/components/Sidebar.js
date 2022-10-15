@@ -44,7 +44,7 @@ export default function(props){
         setTask("");
     }
 
-    return <div className="h-[100vh] bg-slate-900 text-white flex flex-col p-3 font-mono  text-xl font-bold overflow-y-auto scrollbar fixed w-full lg:w-64" >
+    return <div className="min-h-screen h-full bg-slate-900 text-white flex flex-col p-3 font-mono  text-xl font-bold overflow-y-auto scrollbar fixed w-full lg:w-64 z-40 " >
         <div className="userProfile flex flex-col space-y-6 mt-8">
             <div className="userData flex flex-row items-center justify-center space-x-3 ">
                 <div className="User flex justify-center">

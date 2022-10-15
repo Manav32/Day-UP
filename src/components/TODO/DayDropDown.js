@@ -46,17 +46,17 @@ export default function(props){
         );
     }else{
         return(
-            <div ref={dropDownRef} className="flex flex-col">
-                <div onClick={()=>{setIsOpen(!isOpen)}}  className="cursor-pointer flex p-3 -ml-4 mt-1 bg-none w-44 justify-evenly rounded-full flex-row mb-2 text-black max-h-10">
-                    <div className="content -mt-1">{ContentName}</div>
-                    <div className="svg mr-1">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
-                        <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
-                        </svg>
+            <div ref={dropDownRef} className="flex flex-col h-[15rem] w-[10rem] absolute ">
+                    <div onClick={()=>{setIsOpen(!isOpen)}}  className="cursor-pointer flex p-3 -ml-4 mt-1 bg-none w-32 justify-evenly rounded-full flex-row mb-2 text-black max-h-10 bg-slate-300">
+                        <div className="content -mt-1">{ContentName}</div>
+                        <div className="svg mr-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" class="bi bi-caret-down-fill" viewBox="0 0 16 16">
+                            <path d="M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z"/>
+                            </svg>
+                        </div>
                     </div>
-                </div>
                     { isOpen?(
-                        <div className="content m-2 w-fit ml-5 fixed translate-y-14 " id="contentBox">
+                        <div className="content m-2 w-fit ml-5 " id="contentBox">
                             <div className="flex flex-col bg-slate-300 text-black w-44 justify-center rounded -mt-2">
                                 {days}
                             </div>

@@ -21,7 +21,7 @@ export default function(props){
     const handleBlur = (task) => {
         const list = document.getElementsByClassName("Task_List");
         const checkBox = document.getElementsByClassName("form-check-input");
-        const Menu = document.getElementById("DropDownMenu");
+        const Menu = document.getElementById("DropDownMenu_Focus");
         const submitBtn = document.getElementById("submit-bt");
 
         if(!FocusTaskSet){
@@ -73,11 +73,13 @@ export default function(props){
                 Please Select any task to continue
             </div>
             <form onSubmit={handleSubmit}>
-                <div id="DropDownMenu" className="bg-slate-300 rounded-full w-fit mx-auto transition duration-200">
-                            <DayDropDown 
-                            setDay = {handleSetDay}
-                            dayList = {props.dayList}
-                            />
+                <div className="w-full h-fit flex justify-center mb-10 bg-black ">
+                            <div id="DropDownMenu_Focus" className="h-fit  w-[30%] ">
+                                <DayDropDown 
+                                setDay = {handleSetDay}
+                                dayList = {props.dayList}
+                                />
+                            </div>
                 </div>
 
                 <div className="taskList my-4 h-[16rem] p-3">
