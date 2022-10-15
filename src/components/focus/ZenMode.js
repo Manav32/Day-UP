@@ -1,10 +1,8 @@
 import { useContext, useState } from "react";
 import taskContext from "../../context/Task/TaskContext";
 import DayDropDown from "../TODO/DayDropDown";
-import TaskBox from "../TODO/TasksBox";
 import FocusModeInput from "./FocusModeInput";
 import FocusModeTimer from "./FocusModeTimer";
-import StopWatch from "./StopWatch";
 
 
 export default function(props){
@@ -26,10 +24,8 @@ export default function(props){
         const Menu = document.getElementById("DropDownMenu");
         const submitBtn = document.getElementById("submit-bt");
 
-        //setting task name that we selected
-        setTaskName(task.name);
-
         if(!FocusTaskSet){
+            console.log(FocusTaskSet);
             for(let i=0; i<list.length; i++){
                 if(list[i].id == task.id){
                     continue;                         
@@ -43,8 +39,7 @@ export default function(props){
             FocusTaskSet = true; //Making is Clicked true
             submitBtn.disabled = false;
             setId = task.id; //Setting id
-        }else if(task.id === setId){
-            Menu.classList.remove("invisible");
+        }else if(task.id == setId){
             for(let i=0; i<list.length; i++){
                 if(list[i].id == task.id){
                     continue;                         
@@ -55,7 +50,7 @@ export default function(props){
                 submitBtn.disabled = true;
             }
             FocusTaskSet = false;
-            
+            Menu.classList.remove("invisible");
         }
     };
     
@@ -63,7 +58,7 @@ export default function(props){
     let [FocusModeDataVisible, setFocusModeDataVisible] = useState(false);
     let [FocusModeVisible, setFocusModeVisible] = useState(false);
     let setFocusModeData = <FocusModeInput taskName={taskName} setFocusModeVisible={setFocusModeVisible}/>
-    let FocusMode = <FocusModeTimer taskName={taskName} setFocusModeVisible={setFocusModeVisible}/>
+    let FocusMode = <FocusModeTimer taskName={taskName} setFocusModeVisible={setFocusModeVisible}                  />
     
 
     const handleSubmit = (e) => {
@@ -92,12 +87,15 @@ export default function(props){
                             ts.taskList.map((Task) => {
                                 if (Task.name != null && Task.day != null && (Task.day == day)) {
                                     return (<div className="Task_List mt-4 bg-b p-2 px-4 rounded-full flex flex-row items-center bg-slate-800 min-w-fit transition duration-200" id={Task.id}>
+                                        
                                         <div className="checkbox" onClick={()=>handleBlur(Task)}>
                                             <input type="checkbox" className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-400 checked:border-blue-600 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer" name="task"/>
                                         </div>
+
                                         <div className="TaskName content mx-4 font-light">
                                             {Task.name}
                                         </div>
+
                                     </div>);
                                 }
                             }
