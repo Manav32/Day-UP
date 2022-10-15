@@ -55,7 +55,7 @@ export default function(){
 
     }
     return (
-        <button onClick={handleCatMenu} className="btn lg:hidden absolute top-6 right-3 flex flex-col justify-center items-center">
+        <button onClick={handleCatMenu} className="btn lg:hidden top-6 right-3 flex flex-col justify-center items-center fixed top">
             <div className="w-10 h-1 bg-black rounded-full SideBarCatMenu mt-2 ease-in-out duration-300"></div>
             <div className="w-10 h-1 bg-black rounded-full SideBarCatMenu mt-2 ease-in-out duration-300"></div>
             <div className="w-10 h-1 bg-black rounded-full SideBarCatMenu  mt-2 ease-in-out duration-300"></div>

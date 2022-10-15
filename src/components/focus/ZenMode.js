@@ -37,7 +37,7 @@ export default function(props){
             
             Menu.classList.add("invisible");
             FocusTaskSet = true; //Making is Clicked true
-            submitBtn.disabled = false;
+            submitBtn.classList.remove("invisible");
             setId = task.id; //Setting id
         }else if(task.id == setId){
             for(let i=0; i<list.length; i++){
@@ -47,10 +47,10 @@ export default function(props){
                 list[i].classList.remove("blur");
                 checkBox[i].classList.add("cursor-pointer");
                 checkBox[i].disabled = false;
-                submitBtn.disabled = true;
             }
             FocusTaskSet = false;
             Menu.classList.remove("invisible");
+            submitBtn.classList.add("invisible");
         }
     };
     
@@ -67,7 +67,7 @@ export default function(props){
     }
 
     return (
-        <div className="ZenModeBox h-[35rem] w-80 bg-slate-900 rounded-full pt-5">
+        <div className="ZenModeBox h-[35rem] w-80 bg-slate-900 rounded-full pt-5 mx-auto mb-10">
             <div className="heading w-full text-center mt-5 text-2xl underline underline-offset-8">Focus Mode</div>
             <div className="note w-full text-center mb-3 mt-3 text-xs">
                 Please Select any task to continue
@@ -104,7 +104,7 @@ export default function(props){
                 </div>
                 
                 <div className="Submit btn flex justify-center">
-                    <button id="submit-bt" className="p-4 px-10 bg-white text-slate-900 font-bold w-fit rounded-full text-xl" disabled>
+                    <button id="submit-bt" className="p-4 px-10 bg-white text-slate-900 font-bold w-fit rounded-full text-xl invisible" >
                         Start
                     </button>
                 </div>
