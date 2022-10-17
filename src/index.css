@@ -22,4 +22,26 @@
   .scrollbar::-webkit-scrollbar-thumb:hover {
     background: #494949;
   }
+
+  /* Cat Menu */
+  ._0_catMenu{
+    background: white;
+    --tw-rotate: 45deg;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    position: absolute;
+    top: 0.25rem/* 4px */;
+    right: 0.25rem/* 4px */;
+  }
+  ._1_catMenu{
+    display: none;
+  }
+  ._2_catMenu{
+    background: white;
+    --tw-rotate: -45deg;
+    transform: translate(var(--tw-translate-x), var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+    position: absolute;
+    top: 0.75rem/* 12px */;
+    right: 0.25rem/* 4px */;
+    margin-top: 0;
+  }
 }

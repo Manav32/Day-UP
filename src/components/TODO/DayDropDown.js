@@ -38,8 +38,8 @@ export default function(props){
 
     if(count == 1){
         return (
-            <div className="label flex p-3 -ml-4 bg-none w-44 justify-evenly rounded-full flex-row mb-2 text-black">
-                <div className="name -ml-5 mt-1 ">
+            <div className="label flex flex-col h-[15rem] w-[10rem] absolute ">
+                <div className="cursor-pointer flex py-2 -ml-4 mt-1 bg-none w-32 justify-evenly rounded-full flex-row mb-2 text-black max-h-10 bg-slate-300">
                     {props.dayList[0].label}
                 </div>
             </div>

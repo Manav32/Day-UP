@@ -1,65 +1,46 @@
-import { useContext, useState } from "react";
+import { useContext, useRef, useState } from "react";
 import taskContext from "../../context/Task/TaskContext";
 import DayDropDown from "../TODO/DayDropDown";
 import FocusModeInput from "./FocusModeInput";
 import FocusModeTimer from "./FocusModeTimer";
 
 
-export default function(props){
+export default function (props) {
     
     const ts = useContext(taskContext);
+    
+    //states
     let [taskName, setTaskName] = useState('');
-
+    let [blur, setBlur] = useState(false);
+    let [clicked, setClicked] = useState(false);
+    let [id, setId] = useState(null);
     const [day, setDay] = useState(props.dayList[0].label);
+
 
     const handleSetDay = (day) => {
         setDay(day);
     }
-    let FocusTaskSet = false;
-    let setId = 0;
 
     const handleBlur = (task) => {
-        const list = document.getElementsByClassName("Task_List");
-        const checkBox = document.getElementsByClassName("form-check-input");
-        const Menu = document.getElementById("DropDownMenu_Focus");
-        const submitBtn = document.getElementById("submit-bt");
-
-        if(!FocusTaskSet){
-            console.log(FocusTaskSet);
-            for(let i=0; i<list.length; i++){
-                if(list[i].id == task.id){
-                    continue;                         
-                }
-                list[i].classList.add("blur");
-                checkBox[i].disabled = true;
-                checkBox[i].classList.remove("cursor-pointer");
-            }
-            
-            Menu.classList.add("invisible");
-            FocusTaskSet = true; //Making is Clicked true
-            submitBtn.classList.remove("invisible");
-            setId = task.id; //Setting id
-        }else if(task.id == setId){
-            for(let i=0; i<list.length; i++){
-                if(list[i].id == task.id){
-                    continue;                         
-                }
-                list[i].classList.remove("blur");
-                checkBox[i].classList.add("cursor-pointer");
-                checkBox[i].disabled = false;
-            }
-            FocusTaskSet = false;
-            Menu.classList.remove("invisible");
-            submitBtn.classList.add("invisible");
+        if(!blur){
+            setBlur(true);
+            setId(task.id);
+            setClicked(true);
+            setTaskName(task.name);
+        }else{
+            setBlur(false);
+            setId(null);
+            setClicked(false);
+            setTaskName(null);
         }
     };
-    
-    
+
+
     let [FocusModeDataVisible, setFocusModeDataVisible] = useState(false);
     let [FocusModeVisible, setFocusModeVisible] = useState(false);
-    let setFocusModeData = <FocusModeInput taskName={taskName} setFocusModeVisible={setFocusModeVisible}/>
-    let FocusMode = <FocusModeTimer taskName={taskName} setFocusModeVisible={setFocusModeVisible}                  />
-    
+    let setFocusModeData = <FocusModeInput taskName={taskName} setFocusModeVisible={setFocusModeVisible} />
+    let FocusMode = <FocusModeTimer taskName={taskName} setFocusModeVisible={setFocusModeVisible} />
+
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -74,12 +55,12 @@ export default function(props){
             </div>
             <form onSubmit={handleSubmit}>
                 <div className="w-full h-fit flex justify-center mb-10 bg-black ">
-                            <div id="DropDownMenu_Focus" className="h-fit  w-[30%] ">
-                                <DayDropDown 
-                                setDay = {handleSetDay}
-                                dayList = {props.dayList}
-                                />
-                            </div>
+                    <div className={"h-fit  w-[30%] "+(clicked?"invisible":'')}>
+                        <DayDropDown
+                            setDay={handleSetDay}
+                            dayList={props.dayList}
+                        />
+                    </div>
                 </div>
 
                 <div className="taskList my-4 h-[16rem] p-3">
@@ -88,10 +69,10 @@ export default function(props){
                         {
                             ts.taskList.map((Task) => {
                                 if (Task.name != null && Task.day != null && (Task.day == day)) {
-                                    return (<div className="Task_List mt-4 bg-b p-2 px-4 rounded-full flex flex-row items-center bg-slate-800 min-w-fit transition duration-200" id={Task.id}>
-                                        
-                                        <div className="checkbox" onClick={()=>handleBlur(Task)}>
-                                            <input type="checkbox" className="form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-400 checked:border-blue-600 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left cursor-pointer" name="task"/>
+                                    return (<div className={"mt-4 bg-b p-2 px-4 rounded-full flex flex-row items-center bg-slate-800 min-w-fit transition duration-200"+ (blur?((id!=Task.id)?" blur":''):'')}>
+
+                                        <div className="checkbox" onClick={() => handleBlur(Task)}>
+                                            <input type="checkbox" className={"form-check-input appearance-none h-4 w-4 border border-gray-300 rounded-sm bg-white checked:bg-blue-400 checked:border-blue-600 focus:outline-none transition duration-200 align-top bg-no-repeat bg-center bg-contain float-left"+(!clicked?" cursor-pointer":(id===Task.id?" cursor-pointer":''))} name="task" disabled={(clicked?(Task.id===id?false:true):false)} />
                                         </div>
 
                                         <div className="TaskName content mx-4 font-light">
@@ -104,16 +85,16 @@ export default function(props){
                             )}
                     </div>
                 </div>
-                
+
                 <div className="Submit btn flex justify-center">
-                    <button id="submit-bt" className="p-4 px-10 bg-white text-slate-900 font-bold w-fit rounded-full text-xl invisible" >
+                    <button id="submit-bt" className={"p-4 px-10 bg-white text-slate-900 font-bold w-fit rounded-full text-xl "+(!clicked?'invisible':'')} >
                         Start
                     </button>
                 </div>
             </form>
 
-            {FocusModeDataVisible?(FocusModeVisible?FocusMode:setFocusModeData):''}
-            
+            {FocusModeDataVisible ? (FocusModeVisible ? FocusMode : setFocusModeData) : ''}
+
         </div>
     );
 }

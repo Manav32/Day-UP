@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useRef, useState } from "react";
 import taskContext from "../context/Task/TaskContext";
 import SideBarContent from "./SideBar contents/SideBarContent";
-// import SideBarTaskBtn from "./SideBar contents/SideBarTaskBtn";
 import DayDropDown from "./TODO/DayDropDown";
 
 export default function(props){
@@ -27,7 +26,7 @@ export default function(props){
         document.addEventListener("mousedown", (e)=>{
             if(!createTaskRef.current.contains(e.target)){
                 setIsOpen(false);
-            }
+            }                                                                                                                                                                                                                                                                                                                                                   
         })
     })
 
@@ -86,8 +85,8 @@ export default function(props){
                                     </div>
                                     <div className="Reminder">
                                         <p className="lg:border-b-2 border-slate-600 ml-3 lg:text-center">Select Day</p>
-                                        <div className="bg-slate-300 w-36 rounded-full mt-5 lg:mt-3 h-10 lg:mx-auto text-base">
-                                            <div className="-translate-y-1 -ml-1">
+                                        <div className="w-36 rounded-full mt-5 lg:mt-3 h-10 lg:mx-auto text-base">
+                                            <div className="ml-8">
                                                 <DayDropDown
                                                     setDay = {handleSetDay}
                                                     dayList = {tc.dayList}
