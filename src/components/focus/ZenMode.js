@@ -1,8 +1,8 @@
 import { useContext, useRef, useState } from "react";
 import taskContext from "../../context/Task/TaskContext";
 import DayDropDown from "../TODO/DayDropDown";
-import FocusModeInput from "./FocusModeInput";
 import FocusModeTimer from "./FocusModeTimer";
+import FocusTimeCounter from "./FocusTimeCounter";
 
 
 export default function (props) {
@@ -38,7 +38,7 @@ export default function (props) {
 
     let [FocusModeDataVisible, setFocusModeDataVisible] = useState(false);
     let [FocusModeVisible, setFocusModeVisible] = useState(false);
-    let setFocusModeData = <FocusModeInput taskName={taskName} setFocusModeVisible={setFocusModeVisible} />
+    let setFocusModeData = <FocusTimeCounter taskName={taskName} setFocusModeVisible={setFocusModeVisible} />
     let FocusMode = <FocusModeTimer taskName={taskName} setFocusModeVisible={setFocusModeVisible} />
 
 
